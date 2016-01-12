@@ -1,0 +1,10 @@
+\section{Hardware Side - Delivery Architecture} 
+
+YouTube was released in 2005 and had an immediate success, resulting in a stunning growth ever since. This growth led to changes in the infrastructure, so that is today more flexible and scalable. In late 2007 Google acquired YouTube and the delivery architecture that initially used third party content distribution network services is now fully operated and managed by Google.
+\\
+\\
+Describing a system like YouTube that constantly evolves is not easy, but a lot of the underlying design principles will most likely stay the same for some time.
+
+\subsection{Steps of downloading a YouTube Video}
+
+Watching a video on YouTube includes downloading the video (or parts of the video) to a client. This downloading process involves different sets of servers, which are necessary for load balancing. The steps of accessing a YouTube video are shown in Figure 1:
