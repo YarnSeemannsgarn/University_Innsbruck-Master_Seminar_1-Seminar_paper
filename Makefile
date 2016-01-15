@@ -5,4 +5,4 @@ all:
 	pdflatex seminar_paper.tex
 
 clean:
-	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.pdf	
+	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.pdf	*.lot *.log *.lof

@@ -3,7 +3,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{graphicx}
-\usepackage{seqsplit}
+\usepackage{seqsplit} 
+\usepackage{varioref} % for vref
+\usepackage{tabularx}
+\usepackage{tabulary}
+
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+\setlength{\parindent}{0pt} % no indent after figure
 
 \begin{document}
 
@@ -12,11 +19,17 @@
 \tableofcontents
 \newpage
 
+\listoffigures
+\listoftables
+
 \include{01_introduction}
 \include{03_hardware_side}
-\section{Software Side} 
+\include{04_software_side}
+\include{05_summary}
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{bibliography}
+
+\include{06_declaration_of_authorship}
 
 \end{document}
