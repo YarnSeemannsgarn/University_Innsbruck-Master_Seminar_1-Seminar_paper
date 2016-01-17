@@ -1,4 +1,5 @@
 \section{Software Side}
+\label{sec:software_side}
 \subsection{Software Components}
 
 The latest published software stack of YouTube is from 2012, when the head architect Mike Solomon gave a speech about the Scalibility of YouTube \cite{misc:scalibility_at_youtube} \cite{misc:hihgscalibility}. In Table~\vref{tab:software_components} the most important components mentioned by Solomon are listed.
@@ -48,5 +49,47 @@ The approximation of the correctness is noteworthy, because YouTube does not gua
 
 YouTube videos are requested via HTTP over TCP, which is a transport protocol that assures reliable transfer by retransmitting lost data packets and performs congestion control to avoid overloading the network. As observed by \cite{inc:transport_protocols}, watching YouTube videos over UDP is also possible, but can result in visual impairments of the video contents if there is a network bottleneck. TCP on the other hand may lead to stalling of the video stream, but still outperforms UDP regarding Quality of Experience due to the paper. \\
 \\
-YouTubes delivery strategy has been studied in great detail by Rao \emph{et al.} \cite{inp:network_characteristics}
+YouTubes delivery strategy has been studied in great detail by Rao \emph{et al.} \cite{inp:network_characteristics}, where they show, that the respective strategy mainly depends on the factors listed in Table~\vref{tab:depence_factors}.
+
+\begin{table}[htbp]
+  \begin{center}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      \textbf{Dependence factor} & \textbf{Example} \\
+      \hline
+      \hline
+      The video container & Flash plugin or HTML5 container \\
+      \hline
+      The type of client device & Desktop or mobile devices \\
+      \hline 
+      Type of browser & Google Chrome, Mozilla Firefox, Internet Explorer, Safari etc. \\
+      \hline
+    \end{tabularx}
+    \caption{Dependence factors of the delivery strategy}
+    \label{tab:depence_factors}
+  \end{center}
+\end{table}
+
+Considering these factors, the strategies primarily differ in two video content transferring phases - the \textbf{buffering state phase} and \textbf{steady state phase}. They are illustrated in Figure~\vref{fig:transferring_phases}.
+
+\begin{figure}[htbp]
+  \begin{minipage}{\textwidth}
+    \begin{center}
+      \includegraphics[width=0.5\textwidth]{pictures/transferring_phases.png}
+      \caption[test]{YouTube video content transferring phases\footnotemark[2]}
+    \label{fig:transferring_phases}
+    \end{center}
+  \end{minipage}
+\end{figure}
+
+\footnotetext[2]{Taken from \cite{inp:network_characteristics}}
+
+\begin{description}
+  \item[Buffering phase:] In this phase the video will not be played first, but the initial video content part will be downloaded, which is called buffering. Thereby the data transfer rate is limited by the available end-to-end bandwidth. The playback begins when an efficient amount of data is available is in its buffer.
+
+  \item[Steady state phase:] In this phase the video is tried to be playbacked with preferably few interruptions. In the best case the average download rate in slightly larger than the video encoding. If the average download rate gets smaller then the encoding rate, there will be interruptions in the playback of the video. The average download rate in  is achieved by periodically transferring one block of video content. These periodic transfers produce cycles of ON-OFF periods. During each ON period, a block of data is transferred at the end-to-end available bandwidth that can be used by TCP; the TCP connection is idle during the OFF periods.
+\end{description}
+
+The smooth playback of all videos for all users is a very important goal for YouTube to ensure the Quality of Experience. Besides this, they try to avoid transmitting to much data in advance of consumption in order to reduce the amount of buffering at the client, which is particularly relevant in the case of mobile devices and to reduce the waste of network and server resources by sending data that are never used. As to that Finamore \emph{et al.} \cite{inpr:youtube_everywhere} observed that people tend to abort the playback very soon, with 60\% of videos being watched for less than 20\% of their duration, which results in 25\%-39\% of data transferred unnecessarily. This waste of network traffic is even higher when mobile devices are considered. YouTube is well aware of these facts and therefore aggressive buffering is performed when a video is requested. This means that initially during the buffering phase the server sends as fast as possible to fill up the initial client buffer \cite{inp:network_characteristics}. When about 40 seconds of the video are loaded, the steady state phase will begin. Thus an initial smooth playback can be reached.
+
 
