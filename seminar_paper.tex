@@ -1,4 +1,5 @@
 \documentclass[a4paper, 12pt]{article}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
@@ -9,6 +10,10 @@
 \usepackage{tabulary}
 \usepackage{enumerate}
 
+% Variables
+\renewcommand{\title}{YouTubes video delivery process}
+\renewcommand{\author}{Jan Schlenker}
+
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
 \setlength{\parindent}{0pt} % no indent after figure
@@ -16,6 +21,7 @@
 \begin{document}
 
 \include{00_titlepage}
+\include{01_abstract}
 
 \tableofcontents
 \newpage
@@ -23,7 +29,7 @@
 \listoffigures
 \listoftables
 
-\include{01_introduction}
+\include{02_introduction}
 \include{03_hardware_side}
 \include{04_software_side}
 \include{05_summary}
