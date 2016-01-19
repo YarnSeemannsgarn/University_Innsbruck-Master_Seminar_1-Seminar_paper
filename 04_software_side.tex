@@ -17,7 +17,7 @@ The latest published software stack of YouTube is from 2012, when the head archi
       \hline
       MySQL & Database for - among others - the videos & Depending on the use case, the configuration and the right queries it can scale very well \\
       \hline
-      Vitess & Front-end for MySQL - it serves every YouTube database request & Mainly query optimizations and rewriting \\
+      Vitess & Front end for MySQL - it serves every YouTube database request & Mainly query optimizations and rewriting \\
       \hline
       Apache Zookeeper & Distributed lock server, massively used for distributed configurations & Not mentioned \\
       \hline
@@ -70,7 +70,7 @@ YouTube's delivery strategy has been studied in great detail by Rao \emph{et al.
   \end{center}
 \end{table}
 
-Considering these factors, the strategies primarily differ in two video content transferring phases - the \emph{buffering state phase} and \emph{steady state phase}. They are illustrated in Figure~\vref{fig:transferring_phases}.\\
+Considering these factors, the strategies primarily differ in two video content transferring phases - the \emph{buffering phase} and \emph{steady state phase}. They are illustrated in Figure~\vref{fig:transferring_phases}.\\
 
 \begin{figure}[htbp]
   \begin{minipage}{\textwidth}
@@ -83,7 +83,7 @@ Considering these factors, the strategies primarily differ in two video content 
 \end{figure}
 
 \setlength{\skip\footins}{0cm} % indent before footnote
-\footnotetext[2]{Taken from \cite{inp:network_characteristics}}
+\footnotetext[2]{Source: \cite{inp:network_characteristics}}
 \setlength{\skip\footins}{1cm} % indent before footnote
 
 \begin{description}
