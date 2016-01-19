@@ -1,6 +1,7 @@
 all:
 	pdflatex seminar_paper.tex && \
 	bibtex seminar_paper && \
+	makeglossaries seminar_paper && \
 	pdflatex seminar_paper.tex && \
 	pdflatex seminar_paper.tex
 

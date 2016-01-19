@@ -8,3 +8,12 @@
 *.lot
 *.log
 *.lof
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.idx
+*.ist

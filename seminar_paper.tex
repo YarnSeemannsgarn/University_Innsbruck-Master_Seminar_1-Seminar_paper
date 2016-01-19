@@ -2,22 +2,31 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
+%\usepackage{lmodern}
+%\usepackage{hyperref}
+\usepackage{nohyperref} % This makes hyperref commands do nothing without errors
+\usepackage{url}
 \usepackage{graphicx}
 \usepackage{seqsplit} 
 \usepackage{varioref} % for vref
 \usepackage{tabularx}
 \usepackage{tabulary}
 \usepackage{enumerate}
+\usepackage[acronym]{glossaries}
+
+\include{abbreviations}
+\makeglossaries
 
 % Variables
-\renewcommand{\title}{YouTubes video delivery process}
+\renewcommand{\title}{YouTube's video delivery process}
 \renewcommand{\author}{Jan Schlenker}
 
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
 \setlength{\parindent}{0pt} % no indent after figure
+\setlength{\skip\footins}{1cm} % indent before footnote
 
+% ******************** BEGIN OF DOCUMENT ********************
 \begin{document}
 
 \include{00_titlepage}
@@ -26,6 +35,7 @@
 \tableofcontents
 \newpage
 
+\printglossary[title=List of Acronyms, type=\acronymtype]
 \listoffigures
 \listoftables
 
@@ -40,3 +50,4 @@
 \include{06_declaration_of_authorship}
 
 \end{document}
+% ******************** END OF DOCUMENT ********************
